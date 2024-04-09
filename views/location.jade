@@ -1,0 +1,48 @@
+extends layout
+
+block append head
+  link(rel='stylesheet', href='/stylesheets/table.css')
+
+block content
+  h1(style='text-align:center;') Hướng dẫn ping vị trí
+  p.
+    Dưới đây là danh sách API cho vị trí. 
+    Vui lòng đọc kỹ hướng dẫn trước khi sử dụng :&#41;
+  h2 Danh sách API
+  table
+    thead
+      tr
+        th Phương thức
+        th API
+        th Giải thích
+        th Ví dụ
+        th Giới hạn
+    tbody 
+      tr
+        td GET
+        td /location
+        td Tải trang hướng dẫn ping vị trí
+        td
+        td 10 yêu cầu / phút
+      tr 
+        td GET
+        td /location/&#123;key&#125;/ping/&#123;device_id&#125;
+        td Lấy danh sách vị trí &#40;Tối đa 10&#41; bằng ID thiết bị
+        td /location/mykey/ping/69
+        td 5 yêu cầu / phút
+      tr 
+        td POST
+        td /location/&#123;key&#125;/ping
+        td 
+          | Nhập thông tin vị trí mới gồm:
+          br
+          ul 
+            li device_id* &#40;ID thiết bị / phương tiện&#41;
+            li ipv4 &#40;Địa chỉ ipv4 hiện tại&#41;
+            li latitude* &#40;Vĩ độ hiện tại&#41;
+            li longitude* &#40;Kinh độ hiện tại&#41;
+        td
+          | /location/mykey/ping
+          br
+          | JSON body: &#123; "device_id": 69, "ipv4": "123.456.78.9", latitude: "69.6969696", longitude: "96.9696969" &#125;
+        td 1 yêu cầu / 15 phút

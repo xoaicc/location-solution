@@ -1,0 +1,84 @@
+extends layout
+
+block append head
+  link(rel='stylesheet', href='/stylesheets/table.css')
+
+block content
+  h1(style='text-align:center;') Hướng dẫn ping thiết bị
+  p.
+    Dưới đây là danh sách API cho thiết bị. 
+    Vui lòng đọc kỹ hướng dẫn trước khi sử dụng :&#41;
+  h2 Danh sách API
+  table
+    thead
+      tr
+        th Phương thức
+        th API
+        th Giải thích
+        th Ví dụ
+        th Giới hạn
+    tbody 
+      tr
+        td GET
+        td /device
+        td Tải trang hướng dẫn ping thiết bị
+        td
+        td 10 yêu cầu / phút
+      tr 
+        td GET
+        td /device/&#123;key&#125;/ping/&#123;mac&#125;
+        td Lấy thông tin thiết bị bằng địa chỉ MAC
+        td /device/mykey/ping/a1:b2:c3:d4:e5:f6
+        td 5 yêu cầu / phút
+      tr 
+        td POST
+        td /device/&#123;key&#125;/ping
+        td 
+          | Nhập thông tin thiết bị mới &#40;Không trùng MAC&#41; gồm:
+          br
+          ul 
+            li name &#40;Tên thiết bị / phương tiện&#41;
+            li type &#40;Loại thiết bị / phương tiện&#41;
+            li mac* &#40;Địa chỉ MAC&#41;
+        td
+          | /device/mykey/ping
+          br
+          | JSON body: &#123; "name": "VinFast Vento S", "type": "xmd", mac: "a1:b2:c3:d4:e5:f6" &#125;
+        td 1 yêu cầu / 15 phút
+  h2(style="margin-top: 50px;") Thông tin thiết bị / phương tiện
+  table
+    thead
+      tr
+        th Mã thiết bị / phương tiện
+        th Tên thiết bị / phương tiện
+    tbody 
+      tr
+        td xdt
+        td Xe đạp thường
+      tr
+        td xdd
+        td Xe đạp điện
+      tr
+        td xmt
+        td Xe máy thường
+      tr
+        td xmd
+        td Xe máy điện
+      tr
+        td oct
+        td Xe ô tô con thường
+      tr
+        td ocd
+        td Xe ô tô con điện
+      tr
+        td ott
+        td Xe ô tô tải thường
+      tr
+        td okt
+        td Xe ô tô khách thường
+      tr
+        td obt
+        td Xe ô tô buýt thường
+      tr
+        td obd
+        td Xe ô tô buýt điện

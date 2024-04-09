@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  width: 100vw;
+  width: 100dvw;
+  overflow-x: hidden;
+}
+
+body {
+  padding: 10px 5%;
+  background-color: white;
+  color: black;
+}
+
+div.simple-mode {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+body.dark-mode {
+  background-color: black;
+  color: white;
+}
